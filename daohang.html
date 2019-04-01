@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        img{
+            display: block;
+        }
+        #uls{
+            width: 160px;
+            height: 230px;
+            margin: 100px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 2000px;
+            transform: rotateX(-14deg);
+        }
+        .list{
+            width: 160px;
+            height: 230px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all .5s linear;
+        }
+        .list>img{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="uls">
+        <li class="list lis1">
+            <img src="./images/img3.jpg" alt="">
+        </li>
+        <li class="list lis2">
+            <img src="./images/img5.jpg" alt="">
+        </li>
+        <li class="list lis3">
+            <img src="./images/img6.jpg" alt="">
+        </li>
+        <li class="list lis4">
+            <img src="./images/img11.jpg" alt="">
+        </li>
+        <li class="list lis5">
+            <img src="./images/img12.jpg" alt="">
+        </li>
+        <li class="list lis6">
+            <img src="./images/img14.jpg" alt="">
+        </li>
+        <li class="list lis7">
+            <img src="./images/img16.jpg" alt="">
+        </li>
+        <li class="list lis8">
+            <img src="./images/img20.jpg" alt="">
+        </li>
+        <li class="list lis9">
+            <img src="./images/img21.jpg" alt="">
+        </li>
+    </ul>
+    <button id="rotar">旋转</button>
+    <script>
+        var lis = document.getElementsByClassName("list");
+        var rotar = document.getElementById('rotar');
+        var num = 0;
+        for(var i=0; i<lis.length; i++){
+            lis[i].style.transform = 'rotateY('+(360/lis.length*i)+'deg) translateZ(350px)';
+        }
+//        rotar.addEventListener('click', function () {
+//            ro();
+//        });
+//        function ro() {
+//            for(var j=0; j<lis.length; j++){
+//                lis[j].style.transform = 'rotateY('+(360/lis.length*j+num*40)+'deg) translateZ(350px)'
+//            }
+//            num++
+//        }
+        setInterval(function () {
+            for(var j=0; j<lis.length; j++){
+                lis[j].style.transform = 'rotateY('+(360/lis.length*j+num*40)+'deg) translateZ(350px)'
+            }
+            num++
+        }, 1000)
+        /*
+        * 技术要点
+        * 1、transform-origin基点
+        * 2、掌握旋转rotate
+        * 3、掌握transform的所有知识点
+        * 4、景深perspective：200px;实现近大远小的效果，注意：
+        *       值不能为负 默认值为0 值越大效果越接近2D的视觉效果
+        * 5、开启3D  transform-style: preserve-3d
+        * */
+    </script>
+</body>
+</html>
